@@ -26,7 +26,7 @@ function init(day, playersCount) {
             for (let i = 0; i < prevBolds.length; i++) {
                 const prev = prevBolds[i];
                 const final = finalBolds[i]
-                if(finalBolds[i] == null && prev !== null){
+                if(finalBolds[i] != null || prev !== null){
                     prevBoldsCount[prev] = 0;
                     finalBoldsCount[prev] = 0;
                 }
