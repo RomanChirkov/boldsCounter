@@ -1,4 +1,4 @@
-function init(day, playersCount) {
+function init(day) {
     const sheetId = '10qhSd8jdBXjbCd76ZXT-3GItrosg0dk2ce1hPKWe1MM';
     const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
     const sheetName = 'user-data';
