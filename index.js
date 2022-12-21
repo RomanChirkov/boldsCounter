@@ -18,7 +18,7 @@ function init(day, playersCount) {
             let finalBoldsCount = {};
             let totalBoldsCount = [];
             output.innerHTML = null;
-            for (let i = 0; i < playersCount; i++) {
+            for (let i = 0; i < jsonData.table.rows.length; i++) {
                 console.log(jsonData.table.rows[i])
                 prevBolds.push(jsonData.table.rows[i].c[day]?.v?.split("(")[0] || null)
                 finalBolds.push(jsonData.table.rows[i].c[day + 1]?.v?.split("(")[0] || null)
