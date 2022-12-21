@@ -20,8 +20,16 @@ function init(day) {
             output.innerHTML = null;
             for (let i = 0; i < jsonData.table.rows.length; i++) {
                 console.log(jsonData.table.rows[i])
-                prevBolds.push(jsonData.table.rows[i].c[day]?.v?.split("(")[0] || null)
-                finalBolds.push(jsonData.table.rows[i].c[day + 1]?.v?.split("(")[0] || null)
+                if (jsonData.table.rows[i].c[day]?.v?.split("(")[1]){
+                    prevBolds.push(jsonData.table.rows[i].c[day]?.v?.split("(")[0]);
+                }else{
+                    prevBolds.push(null);
+                }
+                if(jsonData.table.rows[i].c[day + 1]?.v?.split("(")[1]){
+                    finalBolds.push(jsonData.table.rows[i].c[day + 1]?.v?.split("(")[0]);
+                }else{
+                    finalBolds.push(null);
+                }
             }
             for (let i = 0; i < prevBolds.length; i++) {
                 const prev = prevBolds[i];
