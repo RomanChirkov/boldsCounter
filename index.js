@@ -43,7 +43,7 @@ function init(day, playersCount) {
             for (let prev in prevBoldsCount) {
                 for(let final in finalBoldsCount){
                     if(final == prev){
-                        totalBoldsCount.push(`${prev}: ${prevBoldsCount[prev]}+${finalBoldsCount[final]}(${prevBoldsCount[prev]+finalBoldsCount[final]})`);
+                        totalBoldsCount.push(`${prev}: ${finalBoldsCount[final]}+${prevBoldsCount[prev]}(${prevBoldsCount[prev]+finalBoldsCount[final]})`);
                     }
                 }
             }
