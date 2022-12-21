@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+    day: <input type="number" name="" id="day">
+    players count: <input type="number" name="" id="players">
+    <button onclick="createTable()">Get bolds</button>
+    <table class="output">
+    </table>
+    <script src="index.js"></script>
+    <script>
+        function createTable(){
+            let day = document.getElementById("day").value;
+            let players = document.getElementById("players").value;
+            init(Number(day), Number(players))
+        }
+    </script>
+</body>
+</html>
