@@ -32,16 +32,16 @@ function init(day) {
                 }
             }
             for (let i = 0; i < prevBolds.length; i++) {
-                const prev = prevBolds[i];
-                const final = finalBolds[i]
+                const prev = prevBolds[i].trim() ;
+                const final = finalBolds[i].trim(); 
                 if(finalBolds[i] != null || prev !== null){
                     prevBoldsCount[prev] = 0;
                     finalBoldsCount[prev] = 0;
                 }
             }
             for (let i = 0; i < prevBolds.length; i++) {
-                const prev = prevBolds[i];
-                const final = finalBolds[i]
+                const prev = prevBolds[i].trim() ;
+                const final = finalBolds[i].trim(); 
                 if(final == null && prev !== null){
                     prevBoldsCount[prev] += 1;
                 }else if(final !== null && prev !== null){
