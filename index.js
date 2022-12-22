@@ -32,20 +32,20 @@ function init(day) {
                 }
             }
             for (let i = 0; i < prevBolds.length; i++) {
-                const prev = prevBolds[i].trim() ;
-                const final = finalBolds[i].trim(); 
+                const prev = prevBolds[i];
+                const final = finalBolds[i]
                 if(finalBolds[i] != null || prev !== null){
-                    prevBoldsCount[prev] = 0;
-                    finalBoldsCount[prev] = 0;
+                    prevBoldsCount[prev.trim()] = 0;
+                    finalBoldsCount[prev.trim()] = 0;
                 }
             }
             for (let i = 0; i < prevBolds.length; i++) {
-                const prev = prevBolds[i].trim() ;
-                const final = finalBolds[i].trim(); 
+                const prev = prevBolds[i];
+                const final = finalBolds[i]
                 if(final == null && prev !== null){
-                    prevBoldsCount[prev] += 1;
+                    prevBoldsCount[prev.trim()] += 1;
                 }else if(final !== null && prev !== null){
-                    finalBoldsCount[final] += 1;
+                    finalBoldsCount[final.trim()] += 1;
                 }
             }
             for (let prev in prevBoldsCount) {
