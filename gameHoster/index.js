@@ -92,7 +92,8 @@ function randomRoles() {
     }
     localStorage.setItem("finalPoolText", finalPoolText.innerHTML);
     document.body.appendChild(finalPoolText);
-    setKonfs();
+    rndButton.disabled = true;
+    setTimeout(() => { setKonfs(); }, 500);
 }
 
 function setKonfs() {
@@ -152,10 +153,10 @@ function sendRoles() {
             "mode": "cors",
             "credentials": "include"
         });
-        if (!premiumCheckbox.checked) {
+        console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
+        if (!premiumCheckbox.checked && currentMessagesSent !== totalMessages) {
             sleep(30000);
         }
-        console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
     }
     konfs.forEach((konfa) => {
         if (!isObjectEmpty(konfa)) {
@@ -188,11 +189,14 @@ function sendRoles() {
                 "mode": "cors",
                 "credentials": "include"
             });
+            console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
             currentMessagesSent++;
-            if (!premiumCheckbox.checked) {
+            if (!premiumCheckbox.checked && currentMessagesSent !== totalMessages) {
                 sleep(30000);
             }
-            console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
+            if(currentMessagesSent == totalMessages){
+                rndButton.disabled = false;
+            }
         }
     })
 }
