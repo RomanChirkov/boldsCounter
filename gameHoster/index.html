@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+    :root {
+        --white: #afafaf;
+        --red: #e31b23;
+        --bodyColor: #292a2b;
+        --borderFormEls: hsl(0, 0%, 10%);
+        --bgFormEls: hsl(0, 0%, 14%);
+        --bgFormElsFocus: hsl(0, 7%, 20%);
+    }
+
+    body {
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        font: 18px/1.5 "Open Sans", sans-serif;
+        background: var(--bodyColor);
+        color: var(--white);
+        margin: 1.5rem 0;
+        padding: 0 5%;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    select,
+    input,
+    textarea,
+    button {
+        width: 85%;
+        line-height: 1.5;
+        border: 1px solid var(--borderFormEls);
+        color: var(--white);
+        background: var(--bgFormEls);
+        transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+            transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+    }
+
+    #roles {
+        margin-bottom: 5px;
+    }
+
+    #random {
+        width: 86.1%;
+        margin-bottom: 5px;
+    }
+
+    #reset {
+        width: 25%;
+    }
+
+    button {
+        font-weight: bold;
+    }
+
+    button>* {
+        display: inline-block;
+        width: 100%;
+    }
+
+    button:enabled:hover,
+    button:focus {
+        cursor: pointer;
+    }
+
+    button:disabled {
+        cursor: default;
+        filter: blur(2px);
+    }
+
+    button:enabled:active {
+        background: #e5e5e5;
+        -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+        -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+        box-shadow: inset 0px 0px 5px #c1c1c1;
+        outline: none;
+    }
+
+    .premium {
+        display: flex;
+        align-items: center;
+    }
+
+    #premium {
+        width: 15px;
+        height: 15px;
+    }
+</style>
+
+<body>
+    window.ipsSettings.csrfKey: <input id="csrfKey" type="text">
+    Game title: <input id="title" type="text">
+    Discord: <input id="discord" type="text">
+    Players: <textarea id="players" cols="30" rows="5"></textarea>
+    Roles: <textarea id="roles" cols="30" rows="5"></textarea>
+    <div class="premium">
+        Premium: <input type="checkbox" id="premium">
+    </div>
+    <button disabled id="random">Send Roles</button>
+    <button id="reset">Reset</button>
+    <p id="finalPoolText"></p>
+    <script src="./index.js"></script>
+</body>
+
+</html>
