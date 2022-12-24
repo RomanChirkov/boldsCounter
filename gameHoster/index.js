@@ -192,8 +192,8 @@ function sendRoles() {
                 "mode": "cors",
                 "credentials": "include"
             });
-            console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
             currentMessagesSent++;
+            console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
             if(currentMessagesSent == totalMessages){
                 rndButton.disabled = false;
             }
