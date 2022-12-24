@@ -30,6 +30,17 @@
         padding: 0 5%;
     }
 
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tip {
+        font-size: 12px;
+        color: yellow;
+        width: 430px;
+    }
+
     textarea {
         resize: none;
     }
@@ -99,11 +110,14 @@
 </style>
 
 <body>
-    window.ipsSettings.csrfKey: <input id="csrfKey" type="text">
-    Game title: <input id="title" type="text">
-    Discord: <input id="discord" type="text">
-    Players: <textarea id="players" cols="30" rows="5"></textarea>
-    Roles: <textarea id="roles" cols="30" rows="5"></textarea>
+    <p class="desc">window.ipsSettings.csrfKey: </p>
+    <p class="tip">(Перед новой игрой не забудьте обновить ключ)</p><input id="csrfKey" type="text">
+    <p class="desc">Game title: </p><input id="title" type="text">
+    <p class="desc">Discord: </p><input id="discord" type="text">
+    <p class="desc">Players: </p><textarea id="players" cols="30" rows="5"></textarea>
+    <p class="desc">Roles: </p>
+    <p class="tip">(Чтобы отправить роли конфе, впишите после ролей конфы без пробела "#1", для другой конфы "#2" и
+        т.д., мж вводить не обязательно)</p><textarea id="roles" cols="30" rows="5"></textarea>
     <div class="premium">
         Premium: <input type="checkbox" id="premium">
     </div>

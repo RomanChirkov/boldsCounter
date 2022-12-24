@@ -209,14 +209,14 @@ function reset() {
     localStorage.setItem("rolesArea", "");
     localStorage.setItem("titleArea", "");
     localStorage.setItem("discordArea", "");
-    localStorage.setItem("csrfKey", "");
+    // localStorage.setItem("csrfKey", "");
     localStorage.setItem("finalPoolText", "");
 
     playersArea.value = localStorage.getItem("playersArea");
     rolesArea.value = localStorage.getItem("rolesArea");
     titleArea.value = localStorage.getItem("titleArea");
     discordArea.value = localStorage.getItem("discordArea");
-    csrfKey.value = localStorage.getItem("csrfKey");
+    // csrfKey.value = localStorage.getItem("csrfKey");
     finalPoolText.innerHTML = localStorage.getItem("finalPoolText");
 }
 
