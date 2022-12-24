@@ -154,6 +154,9 @@ function sendRoles() {
             "credentials": "include"
         });
         console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
+        if(currentMessagesSent == totalMessages){
+            rndButton.disabled = false;
+        }
         if (!premiumCheckbox.checked && currentMessagesSent !== totalMessages) {
             sleep(30000);
         }
@@ -191,11 +194,11 @@ function sendRoles() {
             });
             console.log(`Sent ${currentMessagesSent} of ${totalMessages}`);
             currentMessagesSent++;
-            if (!premiumCheckbox.checked && currentMessagesSent !== totalMessages) {
-                sleep(30000);
-            }
             if(currentMessagesSent == totalMessages){
                 rndButton.disabled = false;
+            }
+            if (!premiumCheckbox.checked && currentMessagesSent !== totalMessages) {
+                sleep(30000);
             }
         }
     })
