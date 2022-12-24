@@ -21,12 +21,12 @@
 
     body {
         width: 500px;
+        height: 600px;
         display: flex;
         flex-direction: column;
         font: 18px/1.5 "Open Sans", sans-serif;
         background: var(--bodyColor);
         color: var(--white);
-        margin: 1.5rem 0;
         padding: 0 5%;
     }
 
@@ -39,6 +39,13 @@
         font-size: 12px;
         color: yellow;
         width: 430px;
+    }
+
+    .warning{
+        color: red;
+        width: 430px;
+        font-size: 14px;
+        font-weight: bold;
     }
 
     textarea {
@@ -121,6 +128,8 @@
     <div class="premium">
         Premium: <input type="checkbox" id="premium">
     </div>
+    <p></p>
+    <p class="warning">НЕ ЗАКРЫВАЙТЕ РАСШИРЕНИЕ ПОКА ИДЕТ РАССЫЛКА!!!</p>
     <button disabled id="random">Send Roles</button>
     <button id="reset">Reset</button>
     <p id="finalPoolText"></p>
