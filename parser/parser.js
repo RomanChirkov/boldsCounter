@@ -89,8 +89,9 @@ function setBolds() {
             itemsInPost.forEach((item) => {
                 if (item.nodeName == "P") {
                     if (item.querySelector("strong") && nickname.trim().split("\n")[3] !== hostName) {
-                        console.log(itemsInPost, item)
                         posts.push(`${nickname.trim().split("\n")[3]}: ` + item.querySelector("strong").innerHTML.replace(/&nbsp;/g, '') + `(${page[1]})`);
+                    }else if(item.querySelector("b") && nickname.trim().split("\n")[3] !== hostName ){
+                        posts.push(`${nickname.trim().split("\n")[3]}: ` + item.querySelector("b").innerHTML.replace(/&nbsp;/g, '') + `(${page[1]})`);
                     }
                 }
             })
