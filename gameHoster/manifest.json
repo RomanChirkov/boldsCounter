@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "pd mafia sender",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Парсер болдов для pd mafia",
     "permissions": [
         "tabs",
@@ -12,8 +12,10 @@
         "contentSettings",
         "background"
     ],
-    "background": {
-        "service_worker": "index.js"
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "chirk0ff.one@gamil.com"
+        }
     },
     "host_permissions": [
         "https://prodota.ru/*"

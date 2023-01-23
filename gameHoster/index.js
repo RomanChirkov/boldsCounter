@@ -241,3 +241,26 @@ function sleep(millis) {
         i++;
     }
 }
+
+
+
+
+
+// chrome.tabs.query({
+//     active: true,
+//     windowId: 1
+// }, (tabs) => {
+//     const tab = tabs[0];
+//     if (tab) {
+//         chrome.scripting.executeScript({
+//             target: { tabId: tab.id },
+//             function: () => {
+//                 for (let i = 0; i < document.querySelectorAll("a").length; i++) {
+//                     if (document.querySelectorAll("a")[i].href.includes("csrfKey") && !document.querySelectorAll("a")[i].href.includes("&")) {
+//                        window.postMessage(document.querySelectorAll("a")[i].href.split('csrfKey=')[1], "*");
+//                     }
+//                 }
+//             }
+//         });
+//     }
+// });

@@ -7,6 +7,11 @@
     "content_security_policy": {
         "extension_pages": "script-src 'self'; default-src 'self' 'wasm-unsafe-eval'"
     },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "chirk0ff.one@gmail.com"
+        }
+    },
     "icons": {
         "128": "logo_ny.png"
     },
