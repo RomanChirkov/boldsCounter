@@ -73,6 +73,7 @@ async function getPageContent(url, pdPage, endPage) {
 function getBolds() {
     pages = [];
     let pdPage = Number(window.location.href.substring(window.location.href.lastIndexOf("page/")).split("/")[1]);
+    pdPage = pdPage == 0 ? 1 : pdPage;
     let endPage = Number(document.querySelector(".ipsPagination_pageJump").querySelector("a").innerText.split(" ")[3]);
     getPageContent(`https://prodota.ru/forum/topic/${topic}/page/${pdPage}/?csrfKey=101021491f271df3647abfa6dbdf1a43`, pdPage, endPage)
 }
@@ -89,6 +90,8 @@ function setBolds() {
                 if (item.nodeName == "P") {
                     if (item.querySelector("strong") && nickname.trim().split("\n")[3] !== hostName) {
                         posts.push(`${nickname.trim().split("\n")[3]}: ` + item.querySelector("strong").innerHTML.replace(/&nbsp;/g, '') + `(${page[1]})`);
+                    }else if(item.querySelector("b") && nickname.trim().split("\n")[3] !== hostName ){
+                        posts.push(`${nickname.trim().split("\n")[3]}: ` + item.querySelector("b").innerHTML.replace(/&nbsp;/g, '') + `(${page[1]})`);
                     }
                 }
             })
