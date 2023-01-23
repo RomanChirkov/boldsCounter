@@ -1,5 +1,5 @@
 function init(day) {
-    const sheetId = '1ziXjRAaizz-eVTTAI3YDzjiTLhXHFxeZ7yPulZAxvV';
+    const sheetId = '1ziXjRAaizz-eVTTAI3YDzjiTLhXHFxeZ7yPulZAxvVs';
     const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
     const sheetName = 'user-data';
     const query = encodeURIComponent('Select *')
