@@ -60,7 +60,7 @@ async function getPageContent(url, pdPage, endPage) {
     }).then((data) => {
         let dom = stringToHTML(data);
         pages.push([dom.querySelectorAll(".cPost"), Number(dom.querySelector(".ipsPagination_pageJump").querySelector("a").innerText.split(" ")[1])]);
-        console.log(pages)
+        console.log(`Распаршено ${pdPage} из ${endPage} страниц`)
         pdPage++;
         if (pdPage - 1 < endPage) {
             getPageContent(`https://prodota.ru/forum/topic/${topic}/page/${pdPage}/?csrfKey=101021491f271df3647abfa6dbdf1a43`, pdPage, endPage)
@@ -89,9 +89,27 @@ function setBolds() {
             itemsInPost.forEach((item) => {
                 if (item.nodeName == "P") {
                     if (item.querySelector("strong") && nickname.trim().split("\n")[3] !== hostName) {
-                        posts.push(`${nickname.trim().split("\n")[3]}: ` + item.querySelector("strong").innerHTML.replace(/&nbsp;/g, '') + `(${page[1]})`);
+                        let boldText = "";
+                        if(item.querySelectorAll("strong")) {
+                            item.querySelectorAll("strong").forEach(child => {
+                                boldText += `${child.innerHTML.replace(/&nbsp;/g, '')} `
+                            }) 
+                        } else {
+                            boldText = item.querySelector("strong").innerHTML.replace(/&nbsp;/g, '');
+                        }
+                        posts.push(`${nickname.trim().split("\n")[3]}: ` + boldText + `(${page[1]})`);
+                        boldText = "";
                     }else if(item.querySelector("b") && nickname.trim().split("\n")[3] !== hostName ){
+                        let boldText = "";
+                        if(item.querySelectorAll("b")) {
+                            item.querySelectorAll("b").forEach(child => {
+                                boldText += `${child.innerHTML.replace(/&nbsp;/g, '')} `
+                            }) 
+                        } else {
+                            boldText = item.querySelector("b").innerHTML.replace(/&nbsp;/g, '');
+                        }
                         posts.push(`${nickname.trim().split("\n")[3]}: ` + item.querySelector("b").innerHTML.replace(/&nbsp;/g, '') + `(${page[1]})`);
+                        boldText = "";
                     }
                 }
             })
