@@ -36,7 +36,9 @@ window.addEventListener("keydown", (event) => {
     if (event.isComposing || event.keyCode === 229) {
         return;
     } if (event.which == "17") {
-        getBolds();
+        getBolds("bolds");
+    } if (event.which == "120") {
+        getBolds("posts");
     }
 });
 
@@ -46,7 +48,7 @@ function stringToHTML(str) {
     return dom;
 };
 
-async function getPageContent(url, pdPage, endPage) {
+async function getPageContent(url, pdPage, endPage, type) {
     fetch(url, {
         headers,
         "referrer": "https://prodota.ru/forum/topic/222924/page/266/",
@@ -63,19 +65,23 @@ async function getPageContent(url, pdPage, endPage) {
         console.log(`Распаршено ${pdPage} из ${endPage} страниц`)
         pdPage++;
         if (pdPage - 1 < endPage) {
-            getPageContent(`https://prodota.ru/forum/topic/${topic}/page/${pdPage}/?csrfKey=101021491f271df3647abfa6dbdf1a43`, pdPage, endPage)
+            getPageContent(`https://prodota.ru/forum/topic/${topic}/page/${pdPage}/?csrfKey=101021491f271df3647abfa6dbdf1a43`, pdPage, endPage, type)
         } else {
-            setBolds()
+            if (type == "bolds") {
+                setBolds()
+            } else {
+                getUserPosts();
+            }
         }
     });
 }
 
-function getBolds() {
+function getBolds(type) {
     pages = [];
     let pdPage = Number(window.location.href.substring(window.location.href.lastIndexOf("page/")).split("/")[1]);
     pdPage = pdPage == 0 ? 1 : pdPage;
     let endPage = Number(document.querySelector(".ipsPagination_pageJump").querySelector("a").innerText.split(" ")[3]);
-    getPageContent(`https://prodota.ru/forum/topic/${topic}/page/${pdPage}/?csrfKey=101021491f271df3647abfa6dbdf1a43`, pdPage, endPage)
+    getPageContent(`https://prodota.ru/forum/topic/${topic}/page/${pdPage}/?csrfKey=101021491f271df3647abfa6dbdf1a43`, pdPage, endPage, type)
 }
 
 
@@ -116,4 +122,22 @@ function setBolds() {
         }
     });
     console.log(posts)
+}
+
+function getUserPosts() {
+    let userPosts = [];
+    pages.forEach((page) => {
+        for (let i = 0; i < page[0].length; i++) {
+            let post = page[0][i];
+            let nickname = post.getElementsByClassName("defrelNickTopic")[0].innerText.trim().split("\n")[3];
+            if (nickname == window.getSelection().toString()) {
+                userPosts.push(post);
+            }  
+            
+        }
+    });
+    document.querySelector('#elPostFeed').querySelector('form').innerHTML = "";
+    userPosts.forEach(post => {
+        document.querySelector('#elPostFeed').querySelector('form').appendChild(post)
+    })
 }
